@@ -21,35 +21,8 @@
 
 <v-container grid-list-md style="max-width: 1000px; ">
   <v-layout row wrap justify-center>
-    <v-flex v-for="mb in staffMarkbooks" :key="mb.id" style="max-width: 240px; min-width: 240px;">
-      <v-card>
-        <v-card-media
-          class="white--text"
-          height="130px"
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Monasterio_Khor_Virap%2C_Armenia%2C_2016-10-01%2C_DD_25.jpg/1200px-Monasterio_Khor_Virap%2C_Armenia%2C_2016-10-01%2C_DD_25.jpg"
-        >
-          <v-container fill-height fluid>
-            <v-layout fill-height>
-              <v-flex xs12 align-end flexbox>
-                <span class="headline">{{mb.title}}</span>
-              </v-flex>
-            </v-layout>
-          </v-container>
-        </v-card-media>
-        <v-card-title>
-          <div>
-            <span class="grey--text">Number 10</span><br>
-            <span>Whitehaven Beach</span><br>
-            <span>Whitsunday Island, Whitsunday Islands</span>
-          </div>
-        </v-card-title>
-        <v-card-actions>
-          <v-btn flat color="orange">Share</v-btn>
-          <v-btn flat color="orange">Explore</v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-flex>
-    
+    <Markbook-Card v-for="mb in staffMarkbooks" :key="mb.id" :title="mb.title" />
+
     <v-flex style="max-width: 240px; min-width: 240px;">
       <v-card>
         <v-card-title>
@@ -85,7 +58,7 @@
 </v-container>
 
 
-    <v-dialog v-model="dialog" fullscreen hide-overlay transition="dialog-bottom-transition" scrollable>
+    <v-dialog v-model="dialog" fullscreen hide-overlay transition="dialog-bottom-transition">
       <v-card tile>
         <v-toolbar card dark color="primary">
           <v-btn icon @click.native="dialog = false" dark>
@@ -271,6 +244,8 @@
 
 <script>
 
+  import MarkbookCard from '@/components/markbooks/MarkbookCard'
+
   export default {
         
     data(){
@@ -287,7 +262,10 @@
         title: ''
       }
     },
-    
+    components:{
+      MarkbookCard
+    },
+
     computed : {
       currentStaff(){
         return this.$store.getters['staff/getStaffById'](this.userId)        
