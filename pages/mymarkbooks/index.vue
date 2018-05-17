@@ -323,7 +323,7 @@
           visAll: this.visAll,
           owner: this.userId
         }
-        this.$store.dispatch('markbooks/addMarkbook', createdMarkbook).then(()=>console.log('yo after promise'))
+        this.$store.dispatch('markbooks/addMarkbook', createdMarkbook)
         this.dialog=false
       }
     }

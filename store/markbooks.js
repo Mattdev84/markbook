@@ -46,6 +46,10 @@ export const getters = {
         return staffMarkbooks
     },
 
+    getMarkbook: (state) => (id) =>{
+        return state.markbooks.find(el=>el.id === parseInt(id))
+    },
+
     getNextId(state) {
         return state.markbookmarkbooks.length+1
     }

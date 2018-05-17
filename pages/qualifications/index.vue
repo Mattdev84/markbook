@@ -1,9 +1,11 @@
 <template>
-    <v-container>
-        <v-layout >
+    <v-container fluid >
+        <v-layout   >
+            <v-flex xs12>
             <ul>
                 <li v-for="(qual,key) in qualifications" :key='key'><a @click="loadqual(qual.id)" prevent>{{qual.title + ' ' + key}}</a></li>
             </ul>
+            </v-flex>
         </v-layout>
     </v-container>
 </template>
